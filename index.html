@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gmail</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<nav class="navbar">
+			  	<div class="container-fluid">
+			    	<div class="navbar-header">
+			      		<a class="navbar-brand" href="#">Gmail</a>
+			    	</div>
+			    	<ul class="nav navbar-nav navbar-right">
+			      		<li>
+			      			<a href="#"><span class="glyphicon glyphicon-user"></span> Hi <span id="userFullName">!</span></a>
+			      		</li>
+			      		<li>
+			      			<a href="javascript:void(0)" id="logoutBtn" onclick="logoutFn()"><span class="glyphicon glyphicon-off"></span> Logout</a>
+			      		</li>
+			    	</ul>
+			  	</div>
+			</nav>
+		</header>
+		<div class="mail-content">
+			<div class="mail-sidebar">
+				<button class="btn btn-primary" onclick="showComposeMail()">Compose</button>
+				<ul>
+					<li>
+						<a href="javascript:void(0)" onclick="loadMailList()">Inbox</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" onclick="loadSentList()">Sent</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" onclick="loadDraftList()">Drafts</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" onclick="loadTrashList()">Trash</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mail-list">
+				<ul></ul>
+			</div>
+			<div class="mail-details-content">
+				<div class="mail-details-header">
+					<div class="col-sm-8">
+						<div class="row">
+							<div class="mail-details-subject"></div>
+						</div>
+					</div>
+					<div class="col-sm-4 text-right">
+                        <div class="row">
+                            <ul>
+                                <li id="replyBtn">
+                                    <a href="javascript:void(0)" onclick="replyMail()">Reply</a>
+                                </li>
+                                <li id="forwardBtn">
+                                    <a href="javascript:void(0)" onclick="forwardMail()">Forward</a>
+                                </li>
+                                <li id="trashBtn">
+                                    <a href="javascript:void(0)" onclick="sendToTrash()">Trash</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="mail-details-list">
+                	<ul></ul>
+                </div>
+				<div class="reply-email">
+					<div class="mail-address">
+						<div class="mail-address-heading">To</div>
+						<div class="mail-address-input">
+							<input type="text" id="replyEmailTo" onchange="saveReplyToDrafts()">
+						</div>
+					</div>
+					<div class="mail-subject">
+						<div class="mail-subject-heading">Subject</div>
+						<div class="mail-subject-input">
+							<input type="text" id="replyEmailSubject" onchange="saveReplyToDrafts()">
+						</div>
+					</div>
+					<div class="mail-body">
+						<p id="replyEmailBody" contenteditable></p>
+					</div>
+					<div class="mail-attachment">
+						<span class="glyphicon glyphicon-file"></span> <span class="mailFileName"></span>
+					</div>
+					<div class="mail-footer">
+						<button class="btn btn-primary" onclick="sendReplyMail(false, null)">Send</button>
+						<a href="javascript:void(0)" onclick="uploadAttachmentReplyFn()"><span class="glyphicon glyphicon-paperclip"></span></a>
+						<input type="file" id="uploadAttachmentReply" onchange="saveReplyToDrafts()">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="compose-email">
+			<div class="mail-header">
+				New Message
+				<a href="javascript:void(0)" onclick="closeComposeMail()">X</a>
+			</div>
+			<div class="mail-address">
+				<div class="mail-address-heading">To</div>
+				<div class="mail-address-input">
+					<input type="text" id="composeEmailTo" onchange="saveToDrafts()">
+				</div>
+			</div>
+			<div class="mail-subject">
+				<div class="mail-subject-heading">Subject</div>
+				<div class="mail-subject-input">
+					<input type="text" id="composeEmailSubject" onchange="saveToDrafts()">
+				</div>
+			</div>
+			<div class="mail-body">
+				<p id="composeEmailBody" contenteditable></p>
+			</div>
+			<div class="mail-attachment">
+				<span class="glyphicon glyphicon-file"></span> <span class="mailFileName"></span>
+			</div>
+			<div class="mail-footer">
+				<button class="btn btn-primary" onclick="sendMail(false, null)">Send</button>
+				<a href="javascript:void(0)" onclick="uploadAttachmentFn()"><span class="glyphicon glyphicon-paperclip"></span></a>
+				<input type="file" id="uploadAttachment" onchange="saveToDrafts()">
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script>
+	</body>
+</html>
